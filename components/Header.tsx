@@ -7,6 +7,7 @@ const navLinks = [
   { label: 'Services', href: '#services' },
   { label: 'Team', href: '#team' },
   { label: 'Testimonials', href: '#testimonials' },
+  { label: 'Contact', href: '/contact' }, // Changed: Added Contact page link
 ]
 
 export default function Header() {
@@ -44,21 +45,32 @@ export default function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="text-gray-300 hover:text-white text-sm font-medium transition-colors duration-200 relative group"
-              >
-                {link.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-electric-400 to-purple-400 transition-all duration-300 group-hover:w-full" />
-              </a>
+              link.href.startsWith('/') ? (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className="text-gray-300 hover:text-white text-sm font-medium transition-colors duration-200 relative group"
+                >
+                  {link.label}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-electric-400 to-purple-400 transition-all duration-300 group-hover:w-full" />
+                </Link>
+              ) : (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className="text-gray-300 hover:text-white text-sm font-medium transition-colors duration-200 relative group"
+                >
+                  {link.label}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-electric-400 to-purple-400 transition-all duration-300 group-hover:w-full" />
+                </a>
+              )
             ))}
-            <a
-              href="#contact"
+            <Link
+              href="/contact"
               className="bg-gradient-to-r from-electric-500 to-purple-500 text-white text-sm font-semibold px-6 py-2.5 rounded-full hover:shadow-lg hover:shadow-electric-500/25 transition-all duration-300 hover:scale-105"
             >
               Get in Touch
-            </a>
+            </Link>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -102,22 +114,33 @@ export default function Header() {
       >
         <nav className="bg-navy-800/95 backdrop-blur-lg border-t border-white/5 px-4 py-6 flex flex-col gap-4">
           {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="text-gray-300 hover:text-white text-base font-medium py-2 transition-colors"
-            >
-              {link.label}
-            </a>
+            link.href.startsWith('/') ? (
+              <Link
+                key={link.label}
+                href={link.href}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="text-gray-300 hover:text-white text-base font-medium py-2 transition-colors"
+              >
+                {link.label}
+              </Link>
+            ) : (
+              <a
+                key={link.label}
+                href={link.href}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="text-gray-300 hover:text-white text-base font-medium py-2 transition-colors"
+              >
+                {link.label}
+              </a>
+            )
           ))}
-          <a
-            href="#contact"
+          <Link
+            href="/contact"
             onClick={() => setIsMobileMenuOpen(false)}
             className="bg-gradient-to-r from-electric-500 to-purple-500 text-white text-sm font-semibold px-6 py-3 rounded-full text-center mt-2"
           >
             Get in Touch
-          </a>
+          </Link>
         </nav>
       </div>
     </header>

@@ -1,8 +1,10 @@
+import Link from 'next/link' // Changed: Added Link import for contact page
+
 export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer id="contact" className="border-t border-white/5 bg-navy-900/50">
+    <footer className="border-t border-white/5 bg-navy-900/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Brand */}
@@ -36,6 +38,13 @@ export default function Footer() {
                   {item}
                 </a>
               ))}
+              {/* Changed: Added Contact page link */}
+              <Link
+                href="/contact"
+                className="text-gray-400 hover:text-white text-sm transition-colors"
+              >
+                Contact
+              </Link>
             </nav>
           </div>
 

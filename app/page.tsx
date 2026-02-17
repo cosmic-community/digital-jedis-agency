@@ -1,3 +1,4 @@
+import Link from 'next/link' // Changed: Added Link import for CTA button
 import Hero from '@/components/Hero'
 import ServiceCard from '@/components/ServiceCard'
 import TeamCard from '@/components/TeamCard'
@@ -131,12 +132,13 @@ export default async function HomePage() {
               Let&apos;s build something amazing together. Reach out and we&apos;ll
               get back to you within 24 hours.
             </p>
-            <a
-              href="mailto:hello@digitaljedis.com"
+            {/* Changed: Link to contact page instead of mailto */}
+            <Link
+              href="/contact"
               className="inline-block bg-gradient-to-r from-electric-500 to-purple-500 text-white font-semibold px-10 py-4 rounded-full hover:shadow-xl hover:shadow-electric-500/25 transition-all duration-300 hover:scale-105 text-base"
             >
               Start a Conversation
-            </a>
+            </Link>
           </div>
         </div>
       </section>
